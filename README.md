@@ -1,18 +1,6 @@
-# SAP-samples/repository-template
-This default template for SAP Samples repositories includes files for README, LICENSE, and .reuse/dep5. All repositories on github.com/SAP-samples will be created based on this template.
+# UI5 React Redux Samples
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ui5-react-redux-samples)](https://api.reuse.software/info/github.com/SAP-samples/ui5-react-redux-samples)
 
-# Containing Files
-
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
-
-2. The .reuse/dep5 file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the .reuse/dep5 in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
-
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
-
-# [Title]
 <!-- Please include descriptive title -->
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
@@ -20,18 +8,45 @@ Please edit this file as it is the primary description file for your project. Yo
 -->
 
 ## Description
-<!-- Please include SEO-friendly description -->
+This app is designed to be an example of how to add Redux or Redux Toolkit to a UI5 application.
+
+The branches of this repo correspond with the presentations given. Those presentations are linked in the main readme in each branch.
+
+The main branch of this repo contains all features currently created without any added Redux. Some functionality in other branches may be missing due to the complexity of adding them without Redux. Each presentation will have a snapshot of the main branch from the time the presentations were aired. This is to allow the code to follow along with the presentations, even after time has passed and more features have been added.
 
 ## Requirements
 
 ## Download and Installation
 
+## Available Scripts
+
+In the project directory, you can run:
+
+### `yarn start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+## Redux
+The basic Redux example is on branch `redux-example`.
+The example using Redux Toolkit is on branch `redux-toolkit-example`.
+
+[Here is the link to the Getting Started page in the Redux Documentation](https://redux.js.org/introduction/getting-started). Note that the official documentation is now based on Redux Toolkit, instead of basic Redux. There are still a lot of articles on adding basic Redux to new projects but the way forward is likely going to be using Redux Toolkit. Knowing both is good as a lot of projects still use basic Redux as the toolkit is very new.
+
 ## Known Issues
-<!-- You may simply state "No known issues. -->
+No known issues.
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
+
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
 
 ## Contributing
