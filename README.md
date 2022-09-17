@@ -8,6 +8,24 @@ The branches of this repo correspond with the presentations given. Those present
 
 The main branch of this repo contains all features currently created without any added Redux. Some functionality in other branches may be missing due to the complexity of adding them without Redux. Each presentation will have a snapshot of the main branch from the time the presentations were aired. This is to allow the code to follow along with the presentations, even after time has passed and more features have been added.
 
+# Presentations
+### [How to Make State Management Work for You with Redux and Redux Toolkit](https://www.youtube.com/watch?v=Eo5kYkiTvrQ)
+
+This presentation goes over what state management is, Redux, and Redux Toolkit.
+
+The following branches are associated with the presentation:
+- `state-management-intro-main`
+- `state-management-intro-basic-redux`
+- `state-management-intro-redux-toolkit`
+
+### [How to simplify your data fetching life with Redux Toolkit Query]()
+
+This presentation goes over a tool included with Redux Toolkit called RTK Query and why you should use it.
+
+The following branches are associated with the presentation:
+- `data-fetching-main`
+- `data-fetching-rtk-query`
+
 # Requirements
 [Git](https://git-scm.com/)
 
