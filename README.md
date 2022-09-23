@@ -6,7 +6,9 @@ This is a branch as a part of one of the state management presentation linked be
 
 When switching from branch to branch, please remember to run the command to install the node modules as the app will not run without that step.
 
-### [How to Make State Management Work for You with Redux and Redux Toolkit](https://www.youtube.com/watch?v=Eo5kYkiTvrQ)
+### [How to Make State Management Work for You with Redux and Redux Toolkit](https://youtu.be/OspWBMQZqTw)
+
+[Original release](https://www.youtube.com/watch?v=Eo5kYkiTvrQ)
 
 This presentation goes over what state management is, Redux, and Redux Toolkit.
 
