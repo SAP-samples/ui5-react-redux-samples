@@ -2,23 +2,9 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ui5-react-redux-samples)](https://api.reuse.software/info/github.com/SAP-samples/ui5-react-redux-samples)
 
 # Description
-This app is designed to be an example of how to add Redux or Redux Toolkit to a UI5 application.
+This branch, `data-fetching-main`, is a part of the RTK Query presentation linked below. In this branch, you will find all the features that existed at the time of this branch being created using Redux. The most important features to look at here is the Messages folder and AppHeader component with added notifications. Those two features were added to demonstrate the ease and power of RTK Query and is the relevent code for the related presentation.
 
-The branches of this repo correspond with the presentations given. Those presentations are linked in the main readme in each branch.
-
-The main branch of this repo contains all features currently created without any added Redux. Some functionality in other branches may be missing due to the complexity of adding them without Redux. Each presentation will have a snapshot of the main branch from the time the presentations were aired. This is to allow the code to follow along with the presentations, even after time has passed and more features have been added.
-
-# Presentations
-### [How to Make State Management Work for You with Redux and Redux Toolkit](https://youtu.be/OspWBMQZqTw)
-
-[Original release](https://www.youtube.com/watch?v=Eo5kYkiTvrQ)
-
-This presentation goes over what state management is, Redux, and Redux Toolkit.
-
-The following branches are associated with the presentation:
-- `state-management-intro-main`
-- `state-management-intro-basic-redux`
-- `state-management-intro-redux-toolkit`
+When switching from branch to branch, please remember to run the command to install the node modules as the app will not run without that step.
 
 ### [How to simplify your data fetching life with Redux Toolkit Query]()
 
