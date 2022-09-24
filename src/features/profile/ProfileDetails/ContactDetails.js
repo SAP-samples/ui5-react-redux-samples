@@ -7,13 +7,16 @@ import {
   FlexBoxDirection,
   Label,
   Title,
-  TitleLevel
+  TitleLevel,
 } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import { useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { formatPhoneNumber, formatSingleLineAddress } from '../../utils/formatDetails';
+import {
+  formatPhoneNumber,
+  formatSingleLineAddress,
+} from '../../utils/formatDetails';
 import ContactEditDialog from './ContactEditDialog';
 
 // TODO: Move to Redux
@@ -66,7 +69,11 @@ export const ContactDetails = () => {
         <Title level={TitleLevel.H3} className={classes.title}>
           Contact Information
         </Title>
-        <Button icon="edit" design={ButtonDesign.Transparent} onClick={handleDialogOpen} />
+        <Button
+          icon="edit"
+          design={ButtonDesign.Transparent}
+          onClick={handleDialogOpen}
+        />
       </FlexBox>
       <FlexBox direction={FlexBoxDirection.Column} className={classes.content}>
         <FlexBox className={classes.contentItem}>

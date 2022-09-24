@@ -5,7 +5,7 @@ import {
   Dialog,
   FlexBox,
   FlexBoxAlignItems,
-  FlexBoxJustifyContent
+  FlexBoxJustifyContent,
 } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import { forwardRef } from 'react';
@@ -45,7 +45,9 @@ const ContactEditDialog = (props, ref) => {
           <Button design={ButtonDesign.Emphasized} onClick={handleDialogSave}>
             {`Save`}
           </Button>
-          <Button design={ButtonDesign.Transparent} onClick={handleDialogCancel}>
+          <Button
+            design={ButtonDesign.Transparent}
+            onClick={handleDialogCancel}>
             {`Cancel`}
           </Button>
         </FlexBox>

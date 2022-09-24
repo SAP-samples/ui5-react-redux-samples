@@ -27,5 +27,3 @@ export function formatPhoneNumber(phoneNumberString) {
 export function formatSingleLineAddress(details) {
   return `${details.street}, ${details.apt}, ${details.city}, ${details.state} ${details.zipCode}`;
 }
-
-

@@ -1,4 +1,8 @@
-import { FlexBox, FlexBoxAlignItems, FlexBoxJustifyContent } from '@ui5/webcomponents-react';
+import {
+  FlexBox,
+  FlexBoxAlignItems,
+  FlexBoxJustifyContent,
+} from '@ui5/webcomponents-react';
 import { createUseStyles } from 'react-jss';
 import { formatPhoneNumber } from '../../utils/formatDetails';
 
@@ -14,7 +18,9 @@ export const ProfileHeader = () => {
       alignItems={FlexBoxAlignItems.Center}
       justifyContent={FlexBoxJustifyContent.SpaceBetween}>
       <span className={classes.profileText}>My Profile</span>
-      <span className={classes.numberText}>Work Phone: {formatPhoneNumber(workNumber)}</span>
+      <span className={classes.numberText}>
+        Work Phone: {formatPhoneNumber(workNumber)}
+      </span>
     </FlexBox>
   );
 };

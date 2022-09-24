@@ -9,11 +9,16 @@ const setupMatchMedia = () => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation((query) => {
-      const maxWidth = parseInt(/max-width:(?<maxWidth>\d+)px/.exec(query)?.groups?.maxWidth);
-      const minWidth = parseInt(/min-width:(?<minWidth>\d+)px/.exec(query)?.groups?.minWidth);
+      const maxWidth = parseInt(
+        /max-width:(?<maxWidth>\d+)px/.exec(query)?.groups?.maxWidth
+      );
+      const minWidth = parseInt(
+        /min-width:(?<minWidth>\d+)px/.exec(query)?.groups?.minWidth
+      );
 
       let matches =
-        (minWidth ? minWidth <= window.innerWidth : true) && (maxWidth ? window.innerWidth <= maxWidth : true);
+        (minWidth ? minWidth <= window.innerWidth : true) &&
+        (maxWidth ? window.innerWidth <= maxWidth : true);
 
       if (query === '(orientation: landscape)') {
         matches = window.innerWidth > window.innerHeight;
@@ -27,9 +32,9 @@ const setupMatchMedia = () => {
         removeListener: jest.fn(), // deprecated
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn()
+        dispatchEvent: jest.fn(),
       };
-    })
+    }),
   });
 };
 

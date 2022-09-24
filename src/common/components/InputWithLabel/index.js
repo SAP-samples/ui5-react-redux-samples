@@ -3,11 +3,22 @@ import { createUseStyles } from 'react-jss';
 
 export const InputWithLabel = (props) => {
   const classes = useStyles();
-  const { labelText, placeholder, inputName, inputValue, handleInputChange, showColon, required } = props;
+  const {
+    labelText,
+    placeholder,
+    inputName,
+    inputValue,
+    handleInputChange,
+    showColon,
+    required,
+  } = props;
 
   return (
     <div className={classes.dialogContentItem}>
-      <Label showColon={showColon} required={required} className={classes.label}>
+      <Label
+        showColon={showColon}
+        required={required}
+        className={classes.label}>
         {labelText}
       </Label>
       <Input
