@@ -7,13 +7,16 @@ import {
   Title,
 } from '@ui5/webcomponents-react';
 import { createUseStyles } from 'react-jss';
+import { useSelector } from 'react-redux';
+import { selectMessages } from '../MessagesSlice';
 import { MessageListItem } from './MessageListItem';
 import { MessagesHeader } from './MessagesHeader';
 
-export const Messages = (props) => {
+export const Messages = () => {
   const classes = useStyles();
-  // TODO: Move to Redux
-  const { messages } = props;
+
+  // Redux state
+  const messages = useSelector(selectMessages);
 
   return (
     <FlexBox direction={FlexBoxDirection.Column} className={classes.content}>

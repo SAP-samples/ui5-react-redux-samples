@@ -9,18 +9,21 @@ import {
 import { createUseStyles } from 'react-jss';
 import { useRef } from 'react';
 import { NavBar } from '../../../common/components/NavBar';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectNotifications,
+  selectUnreadNotificationsCount,
+  setNotificationsToRead,
+} from '../../messages/MessagesSlice';
 
-export const AppHeader = (props) => {
+export const AppHeader = () => {
   const classes = useStyles();
-  // TODO: Move to Redux
-  const { notifications, handleReadNotifications } = props;
-
+  const dispatch = useDispatch();
   const notificationsRef = useRef(null);
 
-  // TODO: Move to Redux
-  const unreadNotificationsCount = notifications.filter(
-    (message) => message.read === false
-  ).length;
+  // Redux state
+  const notifications = useSelector(selectNotifications);
+  const unreadNotificationsCount = useSelector(selectUnreadNotificationsCount);
 
   const toggleNotifications = (e) => {
     if (notificationsRef.current.isOpen()) {
@@ -28,6 +31,10 @@ export const AppHeader = (props) => {
     } else {
       notificationsRef.current.showAt(e.detail.targetRef);
     }
+  };
+
+  const handleReadNotifications = () => {
+    dispatch(setNotificationsToRead());
   };
 
   return (

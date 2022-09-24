@@ -18,9 +18,8 @@ import {
 import { createUseStyles } from 'react-jss';
 import { SidebarItem } from './SidebarItem';
 
-export const ProfileSidebar = (props) => {
+export const ProfileSidebar = () => {
   const classes = useStyles();
-  const { content, setContent } = props;
 
   return (
     <FlexBox
@@ -41,27 +40,19 @@ export const ProfileSidebar = (props) => {
         <SidebarItem
           icon="home"
           text="Dashboard"
-          selected={content}
-          setSelected={setContent}
           disabled
         />
         <SidebarItem
           icon="employee"
           text="Personal Information"
-          selected={content}
-          setSelected={setContent}
         />
         <SidebarItem
           icon="post"
           text="Messages"
-          selected={content}
-          setSelected={setContent}
         />
         <SidebarItem
           icon="action-settings"
           text="Settings"
-          selected={content}
-          setSelected={setContent}
           disabled
         />
       </List>

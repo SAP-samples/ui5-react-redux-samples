@@ -18,17 +18,8 @@ import {
   formatSingleLineAddress,
 } from '../../utils/formatDetails';
 import ContactEditDialog from './ContactEditDialog';
-
-// TODO: Move to Redux
-const data = {
-  phoneNumber: '(815) 812-3456',
-  workNumber: '(800) 246-7890',
-  street: '744 Greenville Lane',
-  apt: 'Apt G',
-  city: 'San Francisco',
-  state: 'CA',
-  zipCode: '94100',
-};
+import { selectAddress } from '../ProfileSlice';
+import { useSelector } from 'react-redux';
 
 export const ContactDetails = () => {
   const classes = useStyles();
@@ -36,20 +27,18 @@ export const ContactDetails = () => {
 
   // React state
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  // TODO: Move to Redux state
-  const [contactDetails, setContactDetails] = useState(data);
-  const phoneNumber = contactDetails.phoneNumber;
-  const workNumber = contactDetails.workNumber;
-  const address = contactDetails;
 
-  // TODO: Move to ContactEditDialog when Redux is added
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setContactDetails({
-      ...contactDetails,
-      [name]: value,
-    });
-  };
+  /**
+   * Example of selectors used with a selector created in the slice file
+   * or in the component itself.
+   */
+  const phoneNumber = useSelector(
+    (state) => state.profile.contactDetails.phoneNumber
+  );
+  const workNumber = useSelector(
+    (state) => state.profile.contactDetails.workNumber
+  );
+  const address = useSelector(selectAddress);
 
   // opens dialog
   const handleDialogOpen = () => {
@@ -106,8 +95,6 @@ export const ContactDetails = () => {
           ref={dialogRef}
           setIsDialogOpen={setIsDialogOpen}
           handleDialogCancel={handleDialogCancel}
-          handleInputChange={handleInputChange}
-          {...contactDetails}
         />
       )}
     </>

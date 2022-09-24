@@ -2,10 +2,20 @@ import { FlexBox, FlexBoxAlignItems, Icon } from '@ui5/webcomponents-react';
 import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMainContent, setMainContent } from '../../../AppSlice';
 
 export const SidebarItem = (props) => {
   const classes = useStyles();
-  const { icon, text, selected, setSelected, disabled } = props;
+  const dispatch = useDispatch();
+  const { icon, text, disabled } = props;
+
+  // Redux state
+  const selected = useSelector(selectMainContent);
+
+  const setSelected = () => {
+    dispatch(setMainContent(text));
+  }
 
   return (
     <FlexBox

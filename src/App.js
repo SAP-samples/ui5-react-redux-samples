@@ -3,22 +3,24 @@ import {
   FlexBoxJustifyContent,
   ThemeProvider,
 } from '@ui5/webcomponents-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { selectMainContent } from './AppSlice';
 import { AppHeader } from './features/common/AppHeader';
 import { Messages } from './features/messages/Messages';
+import { setMessages } from './features/messages/MessagesSlice';
 import { ProfileDetails } from './features/profile/ProfileDetails';
 import { ProfileHeader } from './features/profile/ProfileHeader';
 import { ProfileSidebar } from './features/profile/ProfileSidebar';
 
 function App() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  // TODO: Move to Redux
-  const [mainContent, setMainContent] = useState('Personal Information');
-  const [messages, setMessages] = useState([]);
-  const [notifications, setNotifications] = useState([]);
+  // Redux state
+  const mainContent = useSelector(selectMainContent);
 
   useEffect(() => {
     // TODO: Move to RTK Query
@@ -26,55 +28,15 @@ function App() {
       const response = await fetch('http://localhost:4000/messages');
       const messages = await response.json();
 
-      const newNotifs = getNewNotifications(messages);
-
-      setMessages(messages);
-      setNotifications(newNotifs);
+      dispatch(setMessages(messages));
     }
     getMessages();
-  }, [mainContent]);
-
-  // TODO: Move to Redux
-  const getNewNotifications = (newMessages) => {
-    const finalNotifications = [...notifications];
-
-    newMessages.forEach((message) => {
-      /**
-       * We want to grab only the new messages to add to the notifications
-       * array so we are trying to find any messages with an index that
-       * doesn't already exist in notifications.
-       */
-      //
-      if (
-        !finalNotifications.find(
-          (notification) => notification.id === message.id
-        )
-      ) {
-        /**
-         * If the index doesn't exist in notifications, add to our
-         * notifications array and set the read parameter to false.
-         */
-        finalNotifications.push({ ...message, read: false });
-      }
-    });
-
-    // return all new notifications
-    return finalNotifications;
-  };
-
-  // TODO: Move to Redux
-  const handleReadNotifications = () => {
-    const readNotifications = notifications.map((message) => ({
-      ...message,
-      read: true,
-    }));
-    setNotifications(readNotifications);
-  };
+  }, [dispatch, mainContent]);
 
   const getMainContent = () => {
     switch (mainContent) {
       case 'Messages':
-        return <Messages messages={messages} />;
+        return <Messages />;
       case 'Personal Information':
       default:
         return <ProfileDetails />;
@@ -84,16 +46,13 @@ function App() {
   return (
     <ThemeProvider>
       <div>
-        <AppHeader
-          notifications={notifications}
-          handleReadNotifications={handleReadNotifications}
-        />
+        <AppHeader />
         <ProfileHeader />
         <FlexBox className={classes.container}>
           <FlexBox
             justifyContent={FlexBoxJustifyContent.Center}
             className={classes.sidebar}>
-            <ProfileSidebar content={mainContent} setContent={setMainContent} />
+            <ProfileSidebar />
           </FlexBox>
           <FlexBox className={classes.details}>{getMainContent()}</FlexBox>
         </FlexBox>
