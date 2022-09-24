@@ -10,14 +10,16 @@
     "@ui5/webcomponents-fiori": "1.0.0-rc.15",
     "@ui5/webcomponents-icons": "1.0.0-rc.15",
     "@ui5/webcomponents-react": "0.18.9",
+    "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-jss": "^10.8.0",
-    "react-scripts": "4.0.3"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "server": "nodemon json-server/server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -40,5 +42,9 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(@ui5|lit-html)).*\\.js$"
     ]
+  },
+  "devDependencies": {
+    "json-server": "^0.17.0",
+    "nodemon": "^2.0.20"
   }
 }

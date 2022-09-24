@@ -10,20 +10,23 @@ import {
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
-  Icon,
   List,
   ListSeparators,
   Title,
   TitleLevel,
 } from '@ui5/webcomponents-react';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { createUseStyles } from 'react-jss';
+import { SidebarItem } from './SidebarItem';
 
-export const ProfileSidebar = () => {
+export const ProfileSidebar = (props) => {
   const classes = useStyles();
+  const { content, setContent } = props;
 
   return (
-    <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.content}>
+    <FlexBox
+      direction={FlexBoxDirection.Column}
+      alignItems={FlexBoxAlignItems.Center}
+      className={classes.content}>
       <Avatar
         colorScheme={AvatarColorScheme.Accent6}
         shape={AvatarShape.Circle}
@@ -35,22 +38,32 @@ export const ProfileSidebar = () => {
         <strong>Amanda Smith</strong>
       </Title>
       <List separators={ListSeparators.None} className={classes.list}>
-        <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.listItemContainer}>
-          <Icon name="home" className={classes.listItemIcon} />
-          <div className={classes.listItemText}>Dashboard</div>
-        </FlexBox>
-        <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.listItemContainer}>
-          <Icon name="employee" className={classes.listItemIcon} />
-          <div className={classes.listItemText}>Personal Information</div>
-        </FlexBox>
-        <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.listItemContainer}>
-          <Icon name="post" className={classes.listItemIcon} />
-          <div className={classes.listItemText}>Messages</div>
-        </FlexBox>
-        <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.listItemContainer}>
-          <Icon name="action-settings" className={classes.listItemIcon} />
-          <div className={classes.listItemText}>Settings</div>
-        </FlexBox>
+        <SidebarItem
+          icon="home"
+          text="Dashboard"
+          selected={content}
+          setSelected={setContent}
+          disabled
+        />
+        <SidebarItem
+          icon="employee"
+          text="Personal Information"
+          selected={content}
+          setSelected={setContent}
+        />
+        <SidebarItem
+          icon="post"
+          text="Messages"
+          selected={content}
+          setSelected={setContent}
+        />
+        <SidebarItem
+          icon="action-settings"
+          text="Settings"
+          selected={content}
+          setSelected={setContent}
+          disabled
+        />
       </List>
     </FlexBox>
   );
@@ -68,26 +81,5 @@ const useStyles = createUseStyles({
   },
   list: {
     display: 'flex',
-  },
-  listItemContainer: {
-    padding: '1rem',
-    cursor: 'pointer',
-    height: '2rem',
-    '&:hover': {
-      backgroundColor: ThemingParameters.sapBackgroundColor,
-    },
-  },
-  listItemIcon: {
-    margin: {
-      left: '3rem',
-      right: '2rem',
-    },
-    height: '2rem',
-    width: '2rem',
-    color: ThemingParameters.sapBrandColor,
-  },
-  listItemText: {
-    width: '100%',
-    paddingBottom: '0.5rem',
   },
 });
