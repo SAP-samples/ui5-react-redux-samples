@@ -20,7 +20,7 @@ The following branches are associated with the presentation:
 - `state-management-intro-basic-redux`
 - `state-management-intro-redux-toolkit`
 
-### [How to simplify your data fetching life with Redux Toolkit Query]()
+### [How to simplify your data fetching life with Redux Toolkit Query](https://www.youtube.com/watch?v=Wy8HWC2LSo0)
 
 This presentation goes over a tool included with Redux Toolkit called RTK Query and why you should use it.
 
