@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  messages: [],
   notifications: [],
 };
 
@@ -15,11 +14,8 @@ export const MessagesSlice = createSlice({
   initialState,
 
   reducers: {
-    setMessages: (state, action) => {
+    setNotifications: (state, action) => {
       const messages = action.payload;
-
-      // set messages state
-      state.messages = messages;
 
       messages.forEach((message) => {
         /* We want to grab only the new messages to add to the notifications
@@ -45,13 +41,10 @@ export const MessagesSlice = createSlice({
 });
 
 // ACTIONS
-export const { setMessages, setNotificationsToRead } = MessagesSlice.actions;
+export const { setNotifications, setNotificationsToRead } =
+  MessagesSlice.actions;
 
 // SELECTORS
-export const selectMessages = (state) => {
-  return state.messages.messages;
-};
-
 export const selectNotifications = (state) => {
   return state.messages.notifications;
 };

@@ -13,26 +13,19 @@ import {
   TitleLevel,
 } from '@ui5/webcomponents-react';
 import { createUseStyles } from 'react-jss';
+import { useSetMessageStarredMutation } from '../../api/MessagesApi';
 
 export const MessageListItem = (props) => {
   const classes = useStyles();
   const { message } = props;
 
-  // TODO: Move to RTK Query
-  const handleToggleStarred = async (message) => {
-    const { id, body } = message;
-    const requestOptions = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    };
+  /* The mutation endpoints can take in an object of options and will return a
+  tuple of two values, the function that can be used to call the endpoint, and
+  an object that contains useful properties, similar to the query endpoints.
 
-    const response = await fetch(
-      `http://localhost:4000/messages/${id}`,
-      requestOptions
-    );
-    console.log(response);
-  };
+  Check out the mutations documentation for more info:
+  https://redux-toolkit.js.org/rtk-query/usage/mutations */
+  const [setMessageStarred] = useSetMessageStarredMutation();
 
   // Wanted to have some fun by changing the color of the avatar based on the name of the person
   const getAvatarColor = () => {
@@ -77,7 +70,7 @@ export const MessageListItem = (props) => {
             name={message.starred ? 'favorite' : 'unfavorite'}
             interactive
             onClick={() =>
-              handleToggleStarred({
+              setMessageStarred({
                 id: message.id,
                 body: { ...message, starred: !message.starred },
               })

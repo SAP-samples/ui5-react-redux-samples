@@ -1,3 +1,4 @@
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import {
   CustomListItem,
   FlexBox,
@@ -5,39 +6,52 @@ import {
   List,
   TitleLevel,
   Title,
+  IllustratedMessage,
+  IllustrationMessageType,
 } from '@ui5/webcomponents-react';
 import { createUseStyles } from 'react-jss';
-import { useSelector } from 'react-redux';
-import { selectMessages } from '../MessagesSlice';
+import { useGetMessagesQuery } from '../../api/MessagesApi';
 import { MessageListItem } from './MessageListItem';
 import { MessagesHeader } from './MessagesHeader';
 
 export const Messages = () => {
   const classes = useStyles();
 
-  // Redux state
-  const messages = useSelector(selectMessages);
+  /* RTK Query data (in depth comment in AppHeader)
+  The refetchOnMountOrArgChange forces the API to call the backend again instead
+  of using the cached data until that data is expired.
+   */
+  const {
+    data: messages = [],
+    isFetching,
+    isError,
+  } = useGetMessagesQuery(undefined, { refetchOnMountOrArgChange: true });
 
   return (
     <FlexBox direction={FlexBoxDirection.Column} className={classes.content}>
       <MessagesHeader className={classes.shadowedBox} />
       <Title level={TitleLevel.H4} className={classes.daySeparator}>
-        Today ({messages.length})
+        Today ({messages.length}) test:
+        {isFetching ? ' isFetching' : ' not fetching'}
       </Title>
       <FlexBox
         fitContainer={true}
         direction={FlexBoxDirection.Column}
         className={classes.shadowedBox}>
-        <List className={classes.list}>
-          {messages.map((message) => (
-            <CustomListItem
-              type="Inactive"
-              key={message.id}
-              className={classes.listItem}>
-              <MessageListItem message={message} />
-            </CustomListItem>
-          ))}
-        </List>
+        {isError ? (
+          <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
+        ) : (
+          <List className={classes.list}>
+            {messages.map((message) => (
+              <CustomListItem
+                type="Inactive"
+                key={message.id}
+                className={classes.listItem}>
+                <MessageListItem message={message} />
+              </CustomListItem>
+            ))}
+          </List>
+        )}
       </FlexBox>
     </FlexBox>
   );

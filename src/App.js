@@ -3,35 +3,21 @@ import {
   FlexBoxJustifyContent,
   ThemeProvider,
 } from '@ui5/webcomponents-react';
-import { useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './App.css';
 import { selectMainContent } from './AppSlice';
 import { AppHeader } from './features/common/AppHeader';
 import { Messages } from './features/messages/Messages';
-import { setMessages } from './features/messages/MessagesSlice';
 import { ProfileDetails } from './features/profile/ProfileDetails';
 import { ProfileHeader } from './features/profile/ProfileHeader';
 import { ProfileSidebar } from './features/profile/ProfileSidebar';
 
 function App() {
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   // Redux state
   const mainContent = useSelector(selectMainContent);
-
-  useEffect(() => {
-    // TODO: Move to RTK Query
-    async function getMessages() {
-      const response = await fetch('http://localhost:4000/messages');
-      const messages = await response.json();
-
-      dispatch(setMessages(messages));
-    }
-    getMessages();
-  }, [dispatch, mainContent]);
 
   const getMainContent = () => {
     switch (mainContent) {
