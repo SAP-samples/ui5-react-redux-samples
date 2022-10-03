@@ -2,7 +2,7 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ui5-react-redux-samples)](https://api.reuse.software/info/github.com/SAP-samples/ui5-react-redux-samples)
 
 # Description
-This branch, `data-fetching-main`, is a part of the RTK Query presentation linked below. In this branch, you will find all the features that existed at the time of this branch being created using Redux. The most important features to look at here is the Messages folder and AppHeader component with added notifications. Those two features were added to demonstrate the ease and power of RTK Query and is the relevent code for the related presentation.
+This branch, `data-fetching-rtk-query`, is a part of the RTK Query presentation linked below. In this branch, you will find all the code created to demo the ease of use and power of RTK Query, along with comments for easier understanding of what is happening.
 
 When switching from branch to branch, please remember to run the command to install the node modules as the app will not run without that step.
 
