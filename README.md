@@ -6,7 +6,7 @@ This branch, `data-fetching-main`, is a part of the RTK Query presentation linke
 
 When switching from branch to branch, please remember to run the command to install the node modules as the app will not run without that step.
 
-### [How to simplify your data fetching life with Redux Toolkit Query]()
+### [How to simplify your data fetching life with Redux Toolkit Query](https://www.youtube.com/watch?v=Wy8HWC2LSo0)
 
 This presentation goes over a tool included with Redux Toolkit called RTK Query and why you should use it.
 
